@@ -17,8 +17,9 @@ import (
 	"github.com/sirupsen/logrus"
 
 	sdk "github.com/ethpandaops/lm-agent-sdk-go"
-	"github.com/ethpandaops/lm-agent-sdk-go/examples/internal/exampleutil"
 )
+
+const defaultModel = "QuantTrio/Qwen3-Coder-30B-A3B-Instruct-AWQ"
 
 // logrusHandler adapts logrus to the slog.Handler interface.
 type logrusHandler struct {
@@ -136,7 +137,7 @@ func main() {
 
 	model := strings.TrimSpace(os.Getenv("LM_MODEL"))
 	if model == "" {
-		model = exampleutil.DefaultModel()
+		model = defaultModel
 	}
 
 	// 1. Configure logrus
